@@ -24,7 +24,8 @@ class SortedList{
 
 		while ((line = br.readLine())!= null) {
 			String[] line = line.split(","); // separates each line into an array 
-			line[0] = line[2];// puts song name as first in line array
+			line[0] = line[1];// puts song name as first in line array
+			line[1] = line[2]
 			line[2] = line[3];
 			line[3] = line[4];
 		    songList.add(line);  //puts line array with song name first in arraylist
