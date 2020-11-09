@@ -1,0 +1,59 @@
+mport java.io.*;
+import java.util.ArrayList;
+public class LabFive{
+
+    public static void main(String []args){
+        String startsong, endsong;
+        SortedList alphaList = new SortedList();
+        alphaList.sort(); //sorts array alphabetically
+        SongPlaylist playlist = new SongPlaylist();
+        playlist.subset(alphaList, startsong, endsong);
+        }
+}
+
+class SortedList{
+    ArrayList <String> songList = new ArrayList<String>();
+
+    public SortedList(){
+    }
+
+    public ArrayList<String> getSongs() {
+        String line;
+	    try{                        
+		BufferedReader br = new BufferedReader(new FileReader("SpotifyArtists.csv")); // Openfile
+
+		while ((line = br.readLine())!= null) {
+			String[] line = line.split(","); // separates each line into an array 
+			line[0] = line[2];// puts song name as first in line array
+			line[2] = line[3];
+			line[3] = line[4];
+		    songList.add(line);  //puts line array with song name first in arraylist
+		    }
+	    } // catching Exceptions
+	catch (FileNotFoundException e) {
+		System.out.println("ERROR: File not found " + "SpotifyArtists.csv");
+	}
+	catch (IOException e) {
+		System.out.println("ERROR: Could not read " + "SpotifyArtists.csv");
+	}
+	return songList;
+    }
+    //sort
+    public ArrayList<String> sort(){
+        songList.sort();
+        return songList;
+    }
+}
+class SongPlayList{
+  private SortedList root;
+
+  public void subSet(ArrayList alphaList, String start, String end){
+      for (int i = 0; i< aplhaList.length();i++){ //iterates through array
+          while (alphalist.get(i) > start && alphaList.get(i) < end){
+                FileWriter file = new FileWriter("labFiveOutput.txt"); //creates output file
+                PrintWriter pw = new PrintWriter(file);
+                pw.print(alphaList.get(i)); //prints songs within start and end
+          }
+      }
+   }    
+}
